@@ -16,7 +16,13 @@ const RedirectPage: React.FC = () => {
 				try {
 					const response = await fetch(
 						`/api/v1/shortlink/${shortedCode}`
-					);
+					,{
+						method: 'GET',
+						headers: {
+							'Content-Type': 'application/json',
+							'x-api-key': process.env.NEXT_PUBLIC_API_KEY || '',
+						},
+					});
 					if (!response.ok) {
 						setError('Shortened link not found');
 						setTimeout(() => {
