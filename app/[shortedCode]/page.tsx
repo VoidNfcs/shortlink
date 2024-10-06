@@ -9,13 +9,14 @@ const RedirectPage: React.FC = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 	const router = useRouter();
+	console.log(shortedCode)
 
 	useEffect(() => {
 		const fetchOriginalUrl = async () => {
 			if (shortedCode) {
 				try {
 					const response = await fetch(
-						'/api/v1/shortlink/${shortedCode}'
+						`/api/v1/shortlink/${shortedCode}`
 					);
 					if (!response.ok) {
 						setError('Shortened link not found');
