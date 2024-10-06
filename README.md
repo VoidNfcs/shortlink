@@ -58,7 +58,6 @@ change the base url, database url and api key in the .env file
 
 ```
 DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
-API_KEY = hana9277
 BASE_URL = localhost:3000
 ```
 
