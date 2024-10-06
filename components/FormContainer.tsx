@@ -20,7 +20,7 @@ const FormContainer: React.FC = () => {
 		setErrorMessage('');
 
 		try {
-			const response = await fetch('/api/v1/shortlink', {
+			const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/shortlink`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

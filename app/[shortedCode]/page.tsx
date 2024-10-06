@@ -15,7 +15,7 @@ const RedirectPage: React.FC = () => {
 			if (shortedCode) {
 				try {
 					const response = await fetch(
-						`/api/v1/shortlink/${shortedCode}`
+						`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/shortlink/${shortedCode}`
 					,{
 						method: 'GET',
 						headers: {

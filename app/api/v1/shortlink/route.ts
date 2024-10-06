@@ -2,7 +2,7 @@ import prisma from '@/lib/db';
 import { nanoid } from 'nanoid';
 import { NextRequest, NextResponse } from 'next/server';
 
-const BASE_URL = process.env.BASE_URL || 'localhost:3000';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'localhost:3000';
 
 export async function POST(req: NextRequest) {
 	try {
@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
 			);
 		}
 
-		// Check if the original URL already exists
 		const existingLink = await prisma.shortenedLink.findUnique({
 			where: {
 				originalUrl: url,
@@ -33,10 +32,8 @@ export async function POST(req: NextRequest) {
 			);
 		}
 
-		// Generate a unique shortened ID
 		const shortenedId = nanoid(10);
 
-		// Create a new shortened link in the database
 		const shortenedLink = await prisma.shortenedLink.create({
 			data: {
 				originalUrl: url,
@@ -44,7 +41,6 @@ export async function POST(req: NextRequest) {
 			},
 		});
 
-		// Respond with the newly created shortened link
 		return NextResponse.json(
 			{
 				originalUrl: shortenedLink.originalUrl,
